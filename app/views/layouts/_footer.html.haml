@@ -1,0 +1,27 @@
+#footer
+  #footer_content
+    .right
+      = link_to("About", about_path)
+      &nbsp;
+      = link_to("&copy Irrational Design 2011".html_safe, "http://www.irrationaldesign.com", :target => "_blank")
+
+    #irrational_design
+      .irrational_design
+        An
+        = link_to("Irrational Design", "http://www.irrationaldesign.com", :target => "_blank")
+        Production
+
+      %a.site{:href => "http://www.charitybirthday.com", :target => "_blank"}
+        = image_tag("charity_birthday_logo.png")
+        %br
+        CharityBirthday.com
+
+      %a.site{:href => "http://www.secretgoals.com"}
+        = image_tag("secret_goals_square_logo.png", :style => "border: 1px solid #ccc;")
+        %br
+        SecretGoals.com
+
+      %a.site{:href => "http://www.thematchinggame.com", :target => "_blank"}
+        = image_tag("matchinggame_logo.png")
+        %br
+        TheMatchingGame.com

@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %title BestWords.Me
+    = stylesheet_link_tag 'scaffold'
+    = stylesheet_link_tag 'reset'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'site'
+    = javascript_include_tag "jquery-1.4.2", "rails"
+    = csrf_meta_tag
+
+  %meta{:property => "title", :content => "#{@page_title || DEFAULT_PAGE_TITLE}"}
+  %meta{:property => "description", :content => "#{@page_description || DEFAULT_PAGE_DESCRIPTION}"}
+
+  %meta{:property => "og:title", :content => "BestWords.Me"}
+  %meta{:property => "og:site_name", :content => "BestWords.Me"}
+  %meta{:property => "og:description", :content => ""}
+  %meta{:property => "og:image", :content => "http://bestwords.me/images/logo.png"}
+  %meta{:property => "og:url", :content => "http://bestwords.me"}
+  %meta{:property => "og:type", :content => "website"}
+
+  = content_for :page_specific_head
+
+  %body
+    #header
+      #header_content
+        %h1
+          = link_to("BestWords.Me", "/", :class => "site_title")
+        .header_links
+          - if user_signed_in?
+            = link_to "Sign out", destroy_user_session_path
+            = link_to 'My Page', profile_path(current_user)
+          - else
+            = link_to "Sign in", new_user_session_path
+          = link_to 'Home', '/'
+
+
+
+    #overall_container
+      #content
+        #user_nav
+
+        = raw notice_html
+        = raw alert_html
+
+        = yield
+
+    = render :partial => "layouts/footer"
+
+    %script{:type => "text/javascript", :src => "http://platform.twitter.com/widgets.js"}
+    %script{:type => "text/javascript", :src => "http://connect.facebook.net/en_US/all.js#xfbml=1"}
+    = render :partial => "layouts/analytics"

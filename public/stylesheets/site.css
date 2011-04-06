@@ -1,0 +1,210 @@
+/***** General **** */
+a {
+  color: #20809c;
+  text-decoration: none;
+  cursor: pointer; }
+  a:visited {
+    color: #20809c;
+    text-decoration: none;
+    cursor: pointer; }
+  a img {
+    border: none; }
+
+h1 {
+  font-size: 18pt;
+  margin: 0 0 30px 0;
+  padding: 0; }
+
+h2 {
+  font-size: 15pt;
+  margin: 0;
+  padding: 0; }
+
+h3 {
+  font-size: 13pt;
+  font-weight: normal;
+  margin: 0;
+  padding: 0; }
+
+h4 {
+  margin: 0;
+  padding: 0; }
+
+h1 .inline_link, h2 .inline_link, h3 .inline_link {
+  font-size: 10pt;
+  font-weight: normal; }
+
+.explanation {
+  font-weight: normal;
+  font-size: 10pt; }
+
+.small {
+  font-weight: normal;
+  font-size: 8.5pt; }
+
+/***** All Pages ***** */
+body {
+  font-size: 11pt;
+  font-family: arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #333333;
+  background-color: white; }
+
+#header {
+  padding-bottom: 1px;
+  background-color: black;
+  -webkit-box-shadow: -24px 3px 24px #333333;
+  -moz-box-shadow: -24px 3px 24px #333333;
+  -o-box-shadow: -24px 3px 24px #333333;
+  box-shadow: -24px 3px 24px #333333;
+  margin-bottom: 15px; }
+  #header .header_links {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    display: block; }
+    #header .header_links a {
+      padding: 0 12px;
+      display: block;
+      float: right;
+      color: #999999; }
+      #header .header_links a:visited {
+        color: #999999;
+        padding: 0 12px;
+        display: block;
+        float: right; }
+      #header .header_links a:hover {
+        color: white; }
+      #header .header_links a:first {
+        padding-right: 0; }
+  #header #header_content {
+    height: 3em;
+    width: 756px;
+    margin: auto;
+    overflow: hidden;
+    zoom: 1;
+    position: relative; }
+    #header #header_content h1 {
+      margin-top: 20px;
+      font-size: 19pt; }
+      #header #header_content h1 .site_title {
+        color: white; }
+
+#overall_container {
+  text-align: center;
+  width: 756px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  height: auto !important;
+  margin: auto;
+  min-height: 75%; }
+  #overall_container #content {
+    float: left;
+    width: 700px;
+    margin: 0 0 30px 24px;
+    overflow: hidden;
+    position: relative;
+    zoom: 1;
+    padding-bottom: 30px; }
+    #overall_container #content .tagline {
+      margin-bottom: 30px; }
+
+body.admin #content {
+  width: 756px; }
+
+#footer_content {
+  border-top: 1px solid #333333;
+  padding: 6px 0 12px 0;
+  background-color: white; }
+
+#footer {
+  clear: both;
+  width: 756px;
+  margin: auto;
+  overflow: hidden;
+  zoom: 1;
+  position: relative; }
+  #footer a {
+    color: #999999; }
+    #footer a:visited {
+      color: #999999; }
+    #footer a:hover {
+      color: black; }
+  #footer .right {
+    color: #999999;
+    display: block;
+    float: right;
+    font-size: 9pt; }
+  #footer iframe {
+    margin-left: 12px; }
+
+#irrational_design {
+  padding-bottom: 60px;
+  overflow: hidden; }
+  #irrational_design .irrational_design a {
+    color: #d14334; }
+  #irrational_design .site {
+    float: left;
+    font-size: 9pt;
+    text-align: center;
+    margin: 12px 12px 0 0; }
+
+.right {
+  float: right; }
+
+.clear {
+  clear: both; }
+
+b {
+  font-weight: bold; }
+
+p {
+  padding: 12px 0; }
+
+.section {
+  margin-top: 60px; }
+
+/******** Front Page ******* */
+.new_profile {
+  padding: 30px 0;
+  font-size: 16pt; }
+  .new_profile h2 {
+    margin-bottom: 12px; }
+  .new_profile input {
+    font-size: 16pt;
+    width: 15em; }
+
+.sample {
+  width: 390px;
+  border: 1px solid #cccccc;
+  padding: 12px;
+  margin: 30px auto;
+  overflow: hidden; }
+  .sample img {
+    float: left;
+    margin-right: 12px; }
+  .sample h3 {
+    padding-top: 12px; }
+  .sample p {
+    padding: 6px 0; }
+
+/******* Profile Page ****** */
+.edit_profile, .share_profile {
+  padding: 12px;
+  border: 1px solid #cccccc;
+  background-color: #fffa9c;
+  margin-bottom: 30px; }
+  .edit_profile .profile_field, .share_profile .profile_field {
+    padding: 12px 0; }
+    .edit_profile .profile_field .small, .share_profile .profile_field .small {
+      margin-top: 3px; }
+
+.suggested_words {
+  overflow: hidden;
+  width: 80%;
+  margin: auto; }
+  .suggested_words a {
+    display: inline-block;
+    padding: 6px 12px; }

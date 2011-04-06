@@ -1,0 +1,26 @@
+%h1 Report
+
+%br
+%br
+
+%h3 Users
+%p= User.count
+%ul
+  - User.order("id desc").limit(5).each do |user|
+    %li= link_to("#{user.name} - #{user.slug}", profile_path(user))
+
+%br
+
+%h3 User Words
+%p= UserWord.count
+%ul
+  - UserWord.order("id desc").limit(5).each do |user_word|
+    %li= user_word.smart_word
+
+%br
+  
+%h3 Undefined Words
+%p= UserWord.where("word_id is null").count
+%ul
+  - UserWord.where("word_id is null").order("id desc").limit(20).each do |user_word|
+    %li= user_word.smart_word
