@@ -162,6 +162,6 @@ class User < ActiveRecord::Base
   end
 
   def notify_admin
-    AdminMailer.notify("A new bestwords.me user was created.", "New user details:", {:user => self}).deliver
+    AdminMailer.notify("A new mysixdegrees.me user was created.", "New user details:", {:user => self}).deliver
   end
 end

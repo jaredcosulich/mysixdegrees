@@ -2,9 +2,9 @@ class Mailer < ActionMailer::Base
 
   helper ApplicationHelper
 
-  ADMIN_EMAILS = ["jared@bestwords.me"]
+  ADMIN_EMAILS = ["jared@mysixdegrees.me"]
   default_url_options[:host] = Rails.application.host
-  default :from => "BestWords.Me <support@bestwords.me>", :bcc => "emails@bestwords.me", :host => Rails.application.host, :headers => {'X-SMTPAPI' => '{"category": "BestWords"}'}
+  default :from => "mysixdegrees.me <support@mysixdegrees.me>", :bcc => "emails@mysixdegrees.me", :host => Rails.application.host, :headers => {'X-SMTPAPI' => '{"category": "BestWords"}'}
 
   def notify_words_added(user_id, emailing, user_word_ids, signature)
     @user = User.find(user_id)

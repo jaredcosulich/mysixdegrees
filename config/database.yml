@@ -1,10 +1,10 @@
 development:
-  database: bestwords_dev
+  database: mysixdegrees_dev
   adapter: postgresql
   min_messages: warning
 
 test:
-  database: bestwords_test
+  database: mysixdegrees_test
   adapter: postgresql
   min_messages: warning
 

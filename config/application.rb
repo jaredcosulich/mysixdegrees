@@ -49,7 +49,7 @@ module OmniauthDeviseExample
     config.filter_parameters += [:password]
 
     config.before_initialize do
-      Rails.application.host = "#{(Rails.env.production? ? '' : "#{Rails.env}.")}bestwords.me"
+      Rails.application.host = "#{(Rails.env.production? ? '' : "#{Rails.env}.")}mysixdegrees.me"
 
       Dir["#{Rails.root}/lib/ruby_ext/*.rb"].sort.each do |file|
         require file
@@ -62,9 +62,9 @@ module OmniauthDeviseExample
       ::S3_PAPERCLIP_STORAGE_OPTIONS = {
         :storage => :s3,
         :s3_credentials => "#{Rails.root}/config/s3.yml",
-        :s3_host_alias => 'photos.bestwords.me',
+        :s3_host_alias => 'photos.mysixdegrees.me',
         :s3_headers => {'Expires' => 1.year.from_now.httpdate},
-        :bucket => 'photos.bestwords.me',
+        :bucket => 'photos.mysixdegrees.me',
         :url => ":s3_alias_url",
         :path => "#{Rails.env}/:id/:style"
       }

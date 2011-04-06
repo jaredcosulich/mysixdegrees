@@ -4,7 +4,7 @@ namespace :db do
     require 'heroku'
     require 'heroku/command'
 
-    Heroku::Command::Pgbackups.new(['--app', "bestwords-#{env}"])
+    Heroku::Command::Pgbackups.new(['--app', "mysixdegrees-#{env}"])
   end
 
   desc "capture the production database"
@@ -36,7 +36,7 @@ namespace :db do
     Rake::Task['db:create'].invoke
 
     puts "restoring data"
-    %x{pg_restore -d bestwords_dev db/pg.dump}
+    %x{pg_restore -d mysixdegrees_dev db/pg.dump}
   end
 
   desc "staging clone"
