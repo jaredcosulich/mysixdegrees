@@ -13,6 +13,9 @@ class AddProfiles < ActiveRecord::Migration
     end
 
     create_table :photos do |t|
+      t.integer  :profile_id
+      t.string   :title
+      t.text     :caption
       t.string   :image_file_name
       t.string   :image_content_type
       t.integer  :image_file_size

@@ -1,0 +1,5 @@
+.side_section
+  %h3 Share This Page
+  %p Share these links to build this network:
+  %p= link_to("mysixdegrees.me#{direct_profile_path(@profile)}")
+  %p= "or #{link_to("m6d.me#{direct_profile_path(@profile)}")}".html_safe

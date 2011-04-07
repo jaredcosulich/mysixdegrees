@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'site'
     = javascript_include_tag "jquery-1.4.2", "rails"
     = csrf_meta_tag
+    = render :partial => "shared/lightbox"
 
   %meta{:property => "title", :content => "#{@page_title || DEFAULT_PAGE_TITLE}"}
   %meta{:property => "description", :content => "#{@page_description || DEFAULT_PAGE_DESCRIPTION}"}
@@ -29,7 +30,7 @@
         .header_links
           - if user_signed_in?
             = link_to "Sign out", destroy_user_session_path
-            = link_to 'My Page', profile_path(current_user)
+            = link_to 'My Page', direct_profile_path(current_user)
           - else
             = link_to "Sign in", new_user_session_path
           = link_to 'Home', '/'

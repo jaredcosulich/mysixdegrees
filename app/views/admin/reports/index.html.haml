@@ -7,7 +7,7 @@
 %p= User.count
 %ul
   - User.order("id desc").limit(5).each do |user|
-    %li= link_to("#{user.name} - #{user.slug}", profile_path(user))
+    %li= link_to("#{user.name} - #{user.slug}", direct_profile_path(user))
 
 %br
 

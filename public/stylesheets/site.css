@@ -201,3 +201,11 @@ ol.build_network {
 
 #edit_location {
   padding-bottom: 12px; }
+
+.profile_description {
+  padding-bottom: 30px; }
+  .profile_description p {
+    padding: 0 0 12px 0; }
+
+.profile_photos {
+  padding-bottom: 30px; }

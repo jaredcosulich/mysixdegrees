@@ -4,7 +4,9 @@ OmniauthDeviseExample::Application.routes.draw do
 
   resources :sharings
 
-  resources :profiles
+  resources :profiles do
+    resources :photos
+  end
   
   resources :users, :only => [:create, :update]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
@@ -74,5 +76,5 @@ OmniauthDeviseExample::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
-  match '/:id', :controller => 'profiles', :action => 'show', :as => 'profile', :via => :get
+  match '/:id', :controller => 'profiles', :action => 'show', :as => 'direct_profile', :via => :get
 end

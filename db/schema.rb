@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20110407180616) do
   add_index "links", ["source_type", "source_id"], :name => "index_links_on_source_type_and_source_id"
 
   create_table "photos", :force => true do |t|
+    t.integer  "profile_id"
+    t.string   "title"
+    t.text     "caption"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

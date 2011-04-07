@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def index
-    redirect_to profile_path(current_user)
+    redirect_to direct_profile_path(current_user)
   end
 
   def show
@@ -23,6 +23,12 @@ class ProfilesController < ApplicationController
       join_profile.connections.create(:to_profile => profile)
     end
     redirect_to(profile_path(profile))
+  end
+
+  def update
+    profile = Profile.find_by_slug(params[:id])
+    profile.update_attributes(params[:profile])
+    redirect_to direct_profile_path(profile)
   end
 
 end

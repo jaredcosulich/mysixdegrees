@@ -7,23 +7,23 @@
 %script{:type => "text/javascript", :src => "http://www.google.com/jsapi?key=#{GOOGLE_MAPS_KEY}"}
 = javascript_include_tag("map")
 
-%h1= "#{@owner ? "Your" : "Someone's"} Page"
+%h1= @profile.title.blank? ? "#{@owner ? "Your" : "Someone's"} Page" : @profile.title
 
 .right_side
+  - unless @profile.description.blank?
+    .profile_description
+      = simple_format(auto_link(@profile.description))
+
+  - unless @profile.photos.empty?
+    .profile_photos
+      - @profile.photos.each do |photo|
+        = link_to(image_tag(photo.image.url), photo.image.url(:large), :target => "_blank", :class => "lightbox")
+
   - if @owner
-    .side_section
-      %h3 Share This Page
-      %p Share these links build this network:
-      %p= link_to("mysixdegrees.me#{profile_path(@profile)}")
-      %p= "or #{link_to("http://m6d.me#{profile_path(@profile)}")}".html_safe
+    = render :partial => "profiles/share_page"
+    = render :partial => "profiles/claim_page"
+    = render :partial => "profiles/edit_page"
 
-    .side_section
-      %h3 Save This Page
-      %p Right now you can only edit this page from this computer.
-      %p= link_to_function("Save this page.", "")
-
-    .side_section
-      %h3 Edit This Page
   - else
     .side_section
       %h3 Join This Network
@@ -31,14 +31,14 @@
         = link_to("Create a page", new_profile_path(:join => @profile))
         in this network to join.
   .side_section
-    %h3= "#{@owner ? "Your" : "Their"} Network"
+    %h3 This Network
     - if @connections.empty?
-      %p= "#{@owner ? "Your" : "Their"} network is empty."
+      %p This network is empty.
       - if @owner
         %p Share your page to build your network.
     - else
       - @connections.each do |connection|
-        %p= link_to(connection.to_profile.name, profile_path(connection.to_profile))
+        %p= link_to(connection.to_profile.name, direct_profile_path(connection.to_profile))
 .left_side
   #map
 
