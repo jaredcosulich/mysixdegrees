@@ -1,0 +1,27 @@
+%script{:type => "text/javascript", :src => "http://www.google.com/jsapi?key=#{GOOGLE_MAPS_KEY}"}
+= javascript_include_tag("map")
+
+%h1 Create Your Page
+
+.notify
+  %h3 Verify Your location:
+  %p
+    We show your location to be
+    %b#location_name (searching)
+    = link_to_function("(this is not my location)", "$('#edit_location').toggle(); $('#revised_location').focus();", :class => "small")
+
+  #edit_location{:style => "display: none;"}
+    Your location:
+    = text_field_tag("revised_location")
+    = submit_tag("Set Location", :id => "set_location")
+    %span.searching{:style => "display: none;"} searching...
+
+= form_for Profile.new do |f|
+  = f.hidden_field :location
+  = f.hidden_field :lat
+  = f.hidden_field :lng
+
+  If your location is correct then:
+  %p= f.submit("Create Your Page and Start Sharing")
+
+  #map.center

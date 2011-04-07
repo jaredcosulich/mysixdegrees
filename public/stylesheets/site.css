@@ -12,7 +12,7 @@ a {
 
 h1 {
   font-size: 18pt;
-  margin: 0 0 30px 0;
+  margin: 0 0 12px 0;
   padding: 0; }
 
 h2 {
@@ -80,7 +80,7 @@ body {
         padding-right: 0; }
   #header #header_content {
     height: 3em;
-    width: 756px;
+    width: 900px;
     margin: auto;
     overflow: hidden;
     zoom: 1;
@@ -93,26 +93,16 @@ body {
 
 #overall_container {
   text-align: center;
-  width: 756px;
+  width: 900px;
   position: relative;
   margin: auto;
   overflow: hidden;
   height: auto !important;
   margin: auto;
   min-height: 75%; }
-  #overall_container #content {
-    float: left;
-    width: 700px;
-    margin: 0 0 30px 24px;
-    overflow: hidden;
-    position: relative;
-    zoom: 1;
-    padding-bottom: 30px; }
-    #overall_container #content .tagline {
-      margin-bottom: 30px; }
 
 body.admin #content {
-  width: 756px; }
+  width: 900px; }
 
 #footer_content {
   border-top: 1px solid #333333;
@@ -121,7 +111,7 @@ body.admin #content {
 
 #footer {
   clear: both;
-  width: 756px;
+  width: 900px;
   margin: auto;
   overflow: hidden;
   zoom: 1;
@@ -166,45 +156,44 @@ p {
 .section {
   margin-top: 60px; }
 
-/******** Front Page ******* */
-.new_profile {
-  padding: 30px 0;
-  font-size: 16pt; }
-  .new_profile h2 {
-    margin-bottom: 12px; }
-  .new_profile input {
-    font-size: 16pt;
-    width: 15em; }
+ol {
+  list-style: decimal outside none;
+  padding-left: 30px; }
 
-.sample {
-  width: 390px;
-  border: 1px solid #cccccc;
-  padding: 12px;
-  margin: 30px auto;
-  overflow: hidden; }
-  .sample img {
-    float: left;
-    margin-right: 12px; }
-  .sample h3 {
-    padding-top: 12px; }
-  .sample p {
-    padding: 6px 0; }
-
-/******* Profile Page ****** */
-.edit_profile, .share_profile {
-  padding: 12px;
-  border: 1px solid #cccccc;
-  background-color: #fffa9c;
-  margin-bottom: 30px; }
-  .edit_profile .profile_field, .share_profile .profile_field {
-    padding: 12px 0; }
-    .edit_profile .profile_field .small, .share_profile .profile_field .small {
-      margin-top: 3px; }
-
-.suggested_words {
-  overflow: hidden;
-  width: 80%;
+.center {
   margin: auto; }
-  .suggested_words a {
-    display: inline-block;
-    padding: 6px 12px; }
+
+/******** Front Page ******* */
+ol.build_network {
+  text-align: left;
+  margin: 30px;
+  padding: 30px;
+  font-size: 14pt;
+  width: 600px;
+  margin: auto; }
+  ol.build_network li {
+    margin-bottom: 12px; }
+
+/******* PROFILE PAGE ******* */
+.right_side {
+  text-align: left;
+  width: 300px;
+  float: right;
+  margin-top: 12px; }
+  .right_side .side_section {
+    border: 1px solid #cccccc;
+    padding: 12px;
+    margin-bottom: 12px; }
+
+.left_side {
+  float: left;
+  margin-top: 12px;
+  overflow: hidden;
+  margin-bottom: 30px; }
+
+#map {
+  width: 588px;
+  height: 588px; }
+
+#edit_location {
+  padding-bottom: 12px; }

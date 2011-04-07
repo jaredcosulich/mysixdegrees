@@ -1,0 +1,5 @@
+.idea
+.bundle
+log/*
+tmp/*
+public/system/attachments/*

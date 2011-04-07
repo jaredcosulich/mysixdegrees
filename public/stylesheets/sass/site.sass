@@ -12,8 +12,8 @@
 
 $box_color: #eee
 $background: white
-$width: 756px
-$content_width: 700px
+$width: 900px
+$content_width: 900px
 
 
 /****** General *****/
@@ -31,7 +31,7 @@ a
 
 h1
   font-size: 18pt
-  margin: 0 0 30px 0
+  margin: 0 0 12px 0
   padding: 0
 
 h2
@@ -119,17 +119,7 @@ body
   height: auto !important
   margin: auto
   min-height: 75%
-  #content
-    float: left
-    width: $content_width
-    margin: 0 0 30px 24px
-    overflow: hidden
-    position: relative
-    zoom: 1
-    padding-bottom: 30px
-    .tagline
-      margin-bottom: 30px
-
+  
 body.admin #content
   width: $width
 
@@ -186,47 +176,48 @@ p
 .section
   margin-top: 60px
 
+ol
+  list-style: decimal outside none
+  padding-left: 30px
+
+.center
+  margin: auto
+
 /********* Front Page ********/
 
-.new_profile
-  padding: 30px 0
-  font-size: 16pt
-  h2
-    margin-bottom: 12px
-  input
-    font-size: 16pt
-    width: 15em
-
-.sample
-  width: 390px
-  border: 1px solid #ccc
-  padding: 12px
-  margin: 30px auto
-  overflow: hidden
-  img
-    float: left
-    margin-right: 12px
-  h3
-    padding-top: 12px
-  p
-    padding: 6px 0
-
-/******** Profile Page *******/
-
-.edit_profile, .share_profile
-  padding: 12px
-  border: 1px solid #ccc
-  background-color: #FFFA9C
-  margin-bottom: 30px
-  .profile_field
-    padding: 12px 0
-    .small
-      margin-top: 3px
-
-.suggested_words
-  overflow: hidden
-  width: 80%
+ol.build_network
+  text-align: left
+  margin: 30px
+  padding: 30px
+  font-size: 14pt
+  width: 600px
   margin: auto
-  a
-    display: inline-block
-    padding: 6px 12px
+  li
+    margin-bottom: 12px
+
+
+/******** PROFILE PAGE ********/
+
+.right_side
+  text-align: left
+  width: 300px
+  float: right
+  margin-top: 12px
+  .side_section
+    border: 1px solid #ccc
+    padding: 12px
+    margin-bottom: 12px
+
+.left_side
+  float: left
+  margin-top: 12px
+  overflow: hidden
+  margin-bottom: 30px
+  
+#map
+  width: 588px
+  height: 588px
+
+#edit_location
+  padding-bottom: 12px
+

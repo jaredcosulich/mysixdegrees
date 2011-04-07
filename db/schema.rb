@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404195205) do
+ActiveRecord::Schema.define(:version => 20110407012324) do
 
   create_table "emailings", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,27 @@ ActiveRecord::Schema.define(:version => 20110404195205) do
 
   add_index "links", ["source_type", "source_id"], :name => "index_links_on_source_type_and_source_id"
 
+  create_table "photos", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "slug"
+    t.string   "location"
+    t.decimal  "lat",         :precision => 9, :scale => 6
+    t.decimal  "lng",         :precision => 9, :scale => 6
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sharings", :force => true do |t|
     t.string   "content"
     t.datetime "created_at"
@@ -58,20 +79,6 @@ ActiveRecord::Schema.define(:version => 20110404195205) do
     t.datetime "updated_at"
     t.string   "nickname"
   end
-
-  create_table "user_words", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "word_id"
-    t.string   "custom_word"
-    t.boolean  "good",        :default => true
-    t.string   "ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "signature"
-  end
-
-  add_index "user_words", ["user_id"], :name => "index_user_words_on_user_id"
-  add_index "user_words", ["word_id"], :name => "index_user_words_on_word_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -94,18 +101,11 @@ ActiveRecord::Schema.define(:version => 20110404195205) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.string   "slug"
-    t.string   "ip"
     t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["slug"], :name => "index_users_on_slug"
-
-  create_table "words", :force => true do |t|
-    t.string   "word"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

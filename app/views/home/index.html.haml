@@ -1,13 +1,30 @@
-:javascript
-  $(function(){
-    $("#user_slug").focus(function() {
-      if ($(this).val() == "your_name") $(this).val("");
-    });
-
-    $("#user_slug").focusout(function() {
-      if ($(this).val() == "") $(this).val("your_name");
-    });
-  });
-
 %h1.tagline A Crazy Networking Experiment
 
+%h3 Build A Network - Explore Your Six Degrees
+%ol.build_network
+  %li
+    = link_to("Create A Page >", new_profile_path)
+    .small (add to it as much or as little as you want)
+  %li
+    Share your page with friends
+  %li
+    Each person who views your page gets a page as well.
+  %li
+    A connection is created between your page and theirs.
+    .small
+      (you'll be able to see where they are on the map and view their page)
+
+  %li
+    Your friends do the same - they share their pages with their friends
+  %li
+    You can now see their connections on the map and view their pages
+  %li
+    Traverse the connections as far as they go. Explore your six+ degrees.
+
+Confused?
+%p Just create a page and share it with a few friends. You'll get it soon enough.
+= link_to("Create A Page >", new_profile_path)
+%br
+%br
+%br
+%br

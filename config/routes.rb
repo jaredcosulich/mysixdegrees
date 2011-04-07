@@ -1,16 +1,11 @@
 OmniauthDeviseExample::Application.routes.draw do
 
   match '/link/:link/:token' => "links#index", :as => "link"
-  match '/my_page' => 'profiles#index', :as => :user_root
 
   resources :sharings
 
-  resources :profiles do
-    resources :words do
-      collection { delete :destroy_all }
-    end
-  end
-
+  resources :profiles
+  
   resources :users, :only => [:create, :update]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations'}
   

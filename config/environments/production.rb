@@ -49,5 +49,7 @@ OmniauthDeviseExample::Application.configure do
 
   config.before_initialize do
     ::PAPERCLIP_STORAGE_OPTIONS = S3_PAPERCLIP_STORAGE_OPTIONS
-  end  
+  end
+
+  GOOGLE_MAPS_KEY
 end
