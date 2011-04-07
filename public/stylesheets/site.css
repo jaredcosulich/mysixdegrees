@@ -206,3 +206,8 @@ ol.build_network {
   padding-bottom: 30px; }
   .profile .profile_description p {
     padding: 0 0 12px 0; }
+  .profile .profile_photos {
+    overflow: hidden; }
+    .profile .profile_photos img {
+      display: block;
+      padding: 0 6px 6px 0; }
