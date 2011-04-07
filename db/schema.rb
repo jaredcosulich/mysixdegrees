@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407012324) do
+ActiveRecord::Schema.define(:version => 20110407180616) do
+
+  create_table "connections", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "to_profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "emailings", :force => true do |t|
     t.integer  "user_id"

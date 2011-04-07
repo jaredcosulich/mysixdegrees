@@ -25,7 +25,7 @@ $(function() {
     } else {
       geolocate();
     }
-//    addMarkers();
+    if (window.connections.length > 0) addConnections();
   }
 
   function geolocate() {
@@ -66,21 +66,20 @@ $(function() {
   }
   
 
-  function addMarkers() {
+  function addConnections() {
     var latlngbounds = new google.maps.LatLngBounds();
+    latlngbounds.extend(myMarker.getPosition());
 
-//    var connections = #{@question.opposite_sex_answers(@current_player.gender).map(&:player).collect { |p| {:id => p.id, :lat_lng => p.lat_lng } }.to_json}
-//    for (var i=0; i<answers.length; ++i) {
-//      if (answers[i].lat_lng.lat == 39.833) continue;
-//      var latLng = new google.maps.LatLng(answers[i].lat_lng.lat,answers[i].lat_lng.lng);
-//      var marker = new google.maps.Marker({
-//        icon: '/images/green_dot.png',
-//        position: latLng,
-//        map: map
-//      });
-//      setAnswerClick(marker, answers[i]);
-//      latlngbounds.extend(latLng);
-//    }
+    for (var i=0; i<window.connections.length; ++i) {
+      var connection = window.connections[i];
+      var latLng = new google.maps.LatLng(connection.lat,connection.lng);
+      var marker = new google.maps.Marker({
+        icon: '/images/green_dot.png',
+        position: latLng,
+        map: map
+      });
+      latlngbounds.extend(latLng);
+    }
 
     map.fitBounds(latlngbounds);
     setTimeout(function() { if (map.getZoom() > 8) map.setZoom(8); }, 500);

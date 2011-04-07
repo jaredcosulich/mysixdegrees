@@ -2,29 +2,45 @@
   window.myLocation = "#{@profile.location}"
   window.myLat = #{@profile.lat}
   window.myLng = #{@profile.lng}
+  window.connections = #{@connections.to_json}
 
 %script{:type => "text/javascript", :src => "http://www.google.com/jsapi?key=#{GOOGLE_MAPS_KEY}"}
 = javascript_include_tag("map")
 
-%h1 Your Page
+%h1= "#{@owner ? "Your" : "Someone's"} Page"
 
 .right_side
-  .side_section
-    %h3 Share Your Page
-    %p Share this link to build your network:
-    = link_to("http://mysixdegrees.me#{profile_path(@profile)}")
+  - if @owner
+    .side_section
+      %h3 Share This Page
+      %p Share these links build this network:
+      %p= link_to("mysixdegrees.me#{profile_path(@profile)}")
+      %p= "or #{link_to("http://m6d.me#{profile_path(@profile)}")}".html_safe
 
-  .side_section
-    %h3 Save Your Page
+    .side_section
+      %h3 Save This Page
+      %p Right now you can only edit this page from this computer.
+      %p= link_to_function("Save this page.", "")
 
+    .side_section
+      %h3 Edit This Page
+  - else
+    .side_section
+      %h3 Join This Network
+      %p
+        = link_to("Create a page", new_profile_path(:join => @profile))
+        in this network to join.
   .side_section
-    %h3 Edit Your Page
-
-  .side_section
-    %h3 Your Network
-    - if @network.empty?
-      %p Your network is empty.
-      Share your page to build your network.
-
+    %h3= "#{@owner ? "Your" : "Their"} Network"
+    - if @connections.empty?
+      %p= "#{@owner ? "Your" : "Their"} network is empty."
+      - if @owner
+        %p Share your page to build your network.
+    - else
+      - @connections.each do |connection|
+        %p= link_to(connection.to_profile.name, profile_path(connection.to_profile))
 .left_side
   #map
+
+
+= render :partial => "layouts/other_sites"
