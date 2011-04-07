@@ -10,14 +10,17 @@
 %h1= @profile.title.blank? ? "#{@owner ? "Your" : "Someone's"} Page" : @profile.title
 
 .right_side
-  - unless @profile.description.blank?
-    .profile_description
-      = simple_format(auto_link(@profile.description))
+  - unless @profile.description.blank? && @profile.photos.empty?
+    .profile
+      - unless @profile.description.blank?
+        .profile_description
+          = simple_format(auto_link(@profile.description))
 
-  - unless @profile.photos.empty?
-    .profile_photos
-      - @profile.photos.each do |photo|
-        = link_to(image_tag(photo.image.url), photo.image.url(:large), :target => "_blank", :class => "lightbox")
+      - unless @profile.photos.empty?
+        .profile_photos
+          %p Photos:
+          - @profile.photos.each do |photo|
+            = link_to(image_tag(photo.image.url), photo.image.url(:large), :target => "_blank", :class => "lightbox")
 
   - if @owner
     = render :partial => "profiles/share_page"
@@ -31,7 +34,7 @@
         = link_to("Create a page", new_profile_path(:join => @profile))
         in this network to join.
   .side_section
-    %h3 This Network
+    %h3 The Network from this Page
     - if @connections.empty?
       %p This network is empty.
       - if @owner
