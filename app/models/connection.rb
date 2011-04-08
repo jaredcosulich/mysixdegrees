@@ -8,6 +8,7 @@ class Connection < ActiveRecord::Base
   def as_json(options=nil)
     {
       :id => id,
+      :slug => to_profile.slug,
       :title => to_profile.title || "",
       :location => to_profile.location,
       :lat => to_profile.lat,

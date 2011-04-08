@@ -20,8 +20,11 @@ class ProfilesController < ApplicationController
     session["profiles"] = [] if session["profiles"].nil?
     session["profiles"] << profile.slug
     if (join_profile = Profile.find_by_slug(params[:join]))
+      flash[:notice] = "You've connected to #{join_profile.name} - now create your own connections by sharing this page with friends."
       profile.connections.create(:to_profile => join_profile)
       join_profile.connections.create(:to_profile => profile)
+    else
+      flash[:notice] = "Page created. Now build this network by sharing this page with friends."
     end
     redirect_to(profile_path(profile))
   end

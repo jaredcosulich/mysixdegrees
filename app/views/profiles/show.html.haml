@@ -3,6 +3,7 @@
   window.myLat = #{@profile.lat}
   window.myLng = #{@profile.lng}
   window.connections = #{@connections.to_json}
+  window.fromConnectionSlug = "#{@from[@from.length - 2].nil? ? 0 : @from[@from.length - 2]}"
 
 %script{:type => "text/javascript", :src => "http://www.google.com/jsapi?key=#{GOOGLE_MAPS_KEY}"}
 = javascript_include_tag("map")

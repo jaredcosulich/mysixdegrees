@@ -2,6 +2,8 @@ $(function() {
 
   var map;
   var myMarker;
+  var markers = [];
+  var infoWindows = [];
 
   function loadScript() {
     var script = document.createElement("script");
@@ -78,9 +80,17 @@ $(function() {
         title: connection.title + " " + connection.photo_count + " photos, " + connection.connected_to_count + " connections",
         map: map
       });
+      var path = new google.maps.Polyline({
+        path: new google.maps.MVCArray([latLng, myMarker.getPosition()]),
+        strokeColor: connection.slug == window.fromConnectionSlug ? "#000000" : "#63C600",
+        strokeOpacity: 0.5,
+        map: map
+      })
 
+      setInfoWindow(connection.id, path)
       setInfoWindow(connection.id, marker)
       latlngbounds.extend(latLng);
+      markers.push(marker);
     }
 
     map.fitBounds(latlngbounds);
@@ -88,13 +98,14 @@ $(function() {
   }
 
   function setInfoWindow(id, marker) {
-    var infowindow = new google.maps.InfoWindow({
+    var infoWindow = new google.maps.InfoWindow({
       content: "<div class='in_map_connection'>" + $("#connection_" + id).html() + "</div>"
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
+      infoWindow.open(map,marker);
     });
+    infoWindows.push(infoWindow);
   }
 
   function setLocation(name, lat, lng) {
