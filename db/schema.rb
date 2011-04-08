@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407180616) do
+ActiveRecord::Schema.define(:version => 20110407224716) do
 
   create_table "connections", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "to_profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "reason"
   end
 
   create_table "emailings", :force => true do |t|
@@ -64,12 +65,15 @@ ActiveRecord::Schema.define(:version => 20110407180616) do
     t.integer  "user_id"
     t.string   "slug"
     t.string   "location"
-    t.decimal  "lat",         :precision => 9, :scale => 6
-    t.decimal  "lng",         :precision => 9, :scale => 6
+    t.decimal  "lat",                  :precision => 9, :scale => 6
+    t.decimal  "lng",                  :precision => 9, :scale => 6
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_count"
+    t.integer  "connected_to_count"
+    t.integer  "connected_from_count"
   end
 
   create_table "sharings", :force => true do |t|

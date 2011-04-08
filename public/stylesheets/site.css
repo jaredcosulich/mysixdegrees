@@ -163,6 +163,9 @@ ol {
 .center {
   margin: auto; }
 
+.align_center {
+  text-align: center; }
+
 .other_sites {
   clear: both;
   padding: 60px 0; }

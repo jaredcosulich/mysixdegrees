@@ -10,22 +10,12 @@
 %h1= @profile.title.blank? ? "#{@owner ? "Your" : "Someone's"} Page" : @profile.title
 
 .right_side
-  - unless @profile.description.blank? && @profile.photos.empty?
-    .profile
-      - unless @profile.description.blank?
-        .profile_description
-          = simple_format(auto_link(@profile.description))
-
-      - unless @profile.photos.empty?
-        .profile_photos
-          %p Photos:
-          - @profile.photos.each do |photo|
-            = link_to(image_tag(photo.image.url), photo.image.url(:large), :target => "_blank", :class => "lightbox")
+  = render :partial => "profiles/description_and_photos"
 
   - if @owner
+    = render :partial => "profiles/edit_page"
     = render :partial => "profiles/share_page"
     = render :partial => "profiles/claim_page"
-    = render :partial => "profiles/edit_page"
 
   - else
     .side_section
