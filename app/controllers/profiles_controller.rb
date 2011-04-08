@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_slug(params[:id], :include => :connections)
     @owner = session["profiles"] && session["profiles"].include?(params[:id])
     @connections = @profile.connections
+    @from = ((params[:from] || "").split(",") << @profile.slug)
   end
 
   def new

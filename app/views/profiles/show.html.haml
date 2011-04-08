@@ -19,19 +19,30 @@
 
   - else
     .side_section
-      %h3 Join This Network
-      %p
-        = link_to("Create a page", new_profile_path(:join => @profile))
-        in this network to join.
+      - if @from.length == 1
+        %h3 Connect To This Page
+        %p
+          = link_to("Create a page", new_profile_path(:join => @profile))
+          and it will be automatically connected to this page.
+        %p
+          = link_to("Create a page >", new_profile_path(:join => @profile))
+      - else
+        %h3 How You Got Here
+        %p= @from.collect { |from| p = Profile.find_by_slug(from); link_to_unless(p == @profile, p.name, direct_profile_path(p)) }.join(" => ").html_safe
+        
   .side_section
-    %h3 The Network from this Page
+    %h3 Connections From This Page
     - if @connections.empty?
       %p This network is empty.
       - if @owner
         %p Share your page to build your network.
     - else
       - @connections.each do |connection|
-        %p= link_to(connection.to_profile.name, direct_profile_path(connection.to_profile))
+        .connection{:id => "connection_#{connection.id}"}
+          = link_to(connection.to_profile.name, direct_profile_path(connection.to_profile, :from => path(@from, connection)))
+          .small= connection.to_profile.location
+          .small= truncate(connection.to_profile.description, :length => 40)
+          .small= [pluralize(connection.to_profile.photo_count, "photo"), pluralize(connection.to_profile.connected_to_count, "connection")].join(", ")
 .left_side
   #map
 

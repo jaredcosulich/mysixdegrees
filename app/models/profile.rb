@@ -5,6 +5,10 @@ class Profile < ActiveRecord::Base
 
   after_create :assign_slug
 
+  def connections_from
+    connections.where("to_profile_id = ?", id)
+  end
+  
   def to_param
     slug
   end
@@ -14,6 +18,6 @@ class Profile < ActiveRecord::Base
   end
 
   def name
-    "#{title || "Someone"} (#{location})"
+    title || "Someone"
   end
 end

@@ -4,13 +4,14 @@
 %h1= "Create A Page #{"In This Network" unless @join.nil?}"
 
 .notify
-  %h3 Verify Your location:
-  %p
-    We show your location to be
-    %b#location_name (searching)
-    = link_to_function("(this is not my location)", "$('#edit_location').toggle(); $('#revised_location').focus();", :class => "small")
+  #verify_location{:style => "display: none;"}
+    %h3 Verify Your location:
+    %p
+      We show your location to be
+      %b#location_name (searching)
+      = link_to_function("(this is not my location)", "$('#edit_location').toggle(); $('#revised_location').focus();", :class => "small")
 
-  #edit_location{:style => "display: none;"}
+  #edit_location
     Your location:
     = text_field_tag("revised_location")
     = submit_tag("Set Location", :id => "set_location")

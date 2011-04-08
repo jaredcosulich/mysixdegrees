@@ -5,16 +5,16 @@ class Connection < ActiveRecord::Base
   after_create :update_counts
   after_destroy :update_counts
 
-  def connections_from
-    connections.where("to_profile_id = ?", id)
-  end
-
   def as_json(options=nil)
     {
-      :title => to_profile.title,
+      :id => id,
+      :title => to_profile.title || "",
       :location => to_profile.location,
       :lat => to_profile.lat,
-      :lng => to_profile.lng
+      :lng => to_profile.lng,
+      :has_description => to_profile.description.present?,
+      :photo_count => to_profile.photo_count,
+      :connected_to_count => to_profile.connected_to_count
     }
   end
 

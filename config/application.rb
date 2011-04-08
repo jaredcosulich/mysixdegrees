@@ -72,6 +72,8 @@ module OmniauthDeviseExample
       ::LOCAL_PAPERCLIP_STORAGE_OPTIONS = {
         :url => "/system/attachments/:attachment/:id/:style/:filename"
       }
+
+      Haml::Template.options[:format] = :html5
     end
   end
 end

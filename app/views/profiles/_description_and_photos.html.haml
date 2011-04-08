@@ -1,5 +1,5 @@
+- return unless @owner || @profile.description.present? || @profile.photos.present?
 .profile
-
   - unless @profile.description.blank?
     .profile_description
       = simple_format(auto_link(@profile.description))
@@ -10,31 +10,32 @@
       - @profile.photos.each do |photo|
         = link_to(image_tag(photo.image.url), photo.image.url(:large), :target => "_blank", :class => "lightbox")
 
-  %p.align_center
-    = link_to("Edit Title/Description", "#edit_page", :class => "lightbox")
-    &nbsp; &nbsp;
-    = link_to("Add Photos", "#add_photo", :class => "lightbox")
-  #edit_page{:style => "display: none;"}
-    = form_for(@profile) do |f|
-      %p
-        = f.label :title, "Page Title"
-        = f.text_field :title
-      %p
-        = f.label :description, "Page Description"
-        = f.text_area :description
-      %p
-        = f.submit "Save Changes"
-  #add_photo{:style => "display: none;"}
-    = form_for(:photo, :url => profile_photos_path(@profile), :html => {:multipart => true}) do |f|
-      %h3 Add A Photo
-      %p
-        = f.label :title, "Photo Title"
-        = f.text_field :title
-      %p
-        = f.label :caption, "Photo Caption"
-        = f.text_area :caption
-      %p
-        = f.label :image
-        = f.file_field :image
-      %p
-        = f.submit "Save Changes"
+  - if @owner
+    %p.align_center
+      = link_to("Edit Title/Description", "#edit_page", :class => "lightbox")
+      &nbsp; &nbsp;
+      = link_to("Add Photos", "#add_photo", :class => "lightbox")
+    #edit_page{:style => "display: none;"}
+      = form_for(@profile) do |f|
+        %p
+          = f.label :title, "Page Title"
+          = f.text_field :title
+        %p
+          = f.label :description, "Page Description"
+          = f.text_area :description
+        %p
+          = f.submit "Save Changes"
+    #add_photo{:style => "display: none;"}
+      = form_for(:photo, :url => profile_photos_path(@profile), :html => {:multipart => true}) do |f|
+        %h3 Add A Photo
+        %p
+          = f.label :title, "Photo Title"
+          = f.text_field :title
+        %p
+          = f.label :caption, "Photo Caption"
+          = f.text_area :caption
+        %p
+          = f.label :image
+          = f.file_field :image
+        %p
+          = f.submit "Save Changes"

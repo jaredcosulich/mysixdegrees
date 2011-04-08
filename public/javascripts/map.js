@@ -64,7 +64,6 @@ $(function() {
       map.setCenter(initialLocation);
     }
   }
-  
 
   function addConnections() {
     var latlngbounds = new google.maps.LatLngBounds();
@@ -76,13 +75,26 @@ $(function() {
       var marker = new google.maps.Marker({
         icon: '/images/green_dot.png',
         position: latLng,
+        title: connection.title + " " + connection.photo_count + " photos, " + connection.connected_to_count + " connections",
         map: map
       });
+
+      setInfoWindow(connection.id, marker)
       latlngbounds.extend(latLng);
     }
 
     map.fitBounds(latlngbounds);
     setTimeout(function() { if (map.getZoom() > 8) map.setZoom(8); }, 500);
+  }
+
+  function setInfoWindow(id, marker) {
+    var infowindow = new google.maps.InfoWindow({
+      content: "<div class='in_map_connection'>" + $("#connection_" + id).html() + "</div>"
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map,marker);
+    });
   }
 
   function setLocation(name, lat, lng) {
@@ -95,11 +107,14 @@ $(function() {
       myMarker.setPosition(new google.maps.LatLng(lat,lng));
     } else {
       myMarker = new google.maps.Marker({
-        icon: '/images/green_dot.png',
+        icon: '/images/red_dot.png',
         position: new google.maps.LatLng(lat,lng),
+        title: "This Page",
         map: map
       });
     }
+    $("#edit_location").hide();
+    $("#verify_location").show();
   }
 
   function parseGeocodeResults(results) {

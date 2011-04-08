@@ -203,7 +203,7 @@ ol.build_network {
   height: 588px; }
 
 #edit_location {
-  padding-bottom: 12px; }
+  padding-top: 12px; }
 
 .profile {
   padding-bottom: 30px; }
@@ -214,3 +214,10 @@ ol.build_network {
     .profile .profile_photos img {
       display: block;
       padding: 0 6px 6px 0; }
+
+.connection {
+  padding-top: 12px; }
+
+.in_map_connection {
+  height: 4em;
+  overflow: auto; }
