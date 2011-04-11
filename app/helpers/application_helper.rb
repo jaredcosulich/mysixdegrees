@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def path(from, last_connection)
     return nil if @from.empty?
-    path = from[-2] == [last_connection.to_profile.slug] ? @from[0,-2] : @from
+    path = from[-2] == last_connection.to_profile.slug ? @from[0,-2] : @from
     path.blank? ? nil : path.join(",")
   end
 end

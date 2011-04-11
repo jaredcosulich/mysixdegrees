@@ -22,6 +22,9 @@ $(function() {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map"), myOptions);
+    google.maps.event.addListener(map, 'click', function() {
+      closeInfoWindows();
+    });
     if (window.myLocation) {
       setLocation(window.myLocation, window.myLat, window.myLng);
     } else {
@@ -74,9 +77,38 @@ $(function() {
     for (var i=0; i<window.connections.length; ++i) {
       var connection = window.connections[i];
       var latLng = new google.maps.LatLng(connection.lat,connection.lng);
+
+
+      var flagY = 0;
+      if (connection.connected_to_count > 1) flagY = 80;
+      if (connection.connected_to_count > 5) flagY = 80;
+      if (connection.connected_to_count > 10) flagY = 120;
+      if (connection.connected_to_count > 25) flagY = 158;
+
+      var flagX = 6;
+      if (connection.has_description) flagX = 32;
+      if (connection.photo_count > 0) flagX = 62;
+      if (connection.has_description && connection.photo_count > 0) flagX = 91;
+      var image = new google.maps.MarkerImage('images/flags.png',
+        new google.maps.Size(24, 32),
+        new google.maps.Point(flagX, flagY),
+        new google.maps.Point(0, 32)
+      );
+      var shadow = new google.maps.MarkerImage('images/flag_shadow.png',
+        new google.maps.Size(37, 32),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(0, 32)
+      );
+      var shape = {
+          coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+          type: 'poly'
+      };
       var marker = new google.maps.Marker({
         icon: '/images/green_dot.png',
         position: latLng,
+        shadow: shadow,
+        icon: image,
+        shape: shape,
         title: connection.title + " " + connection.photo_count + " photos, " + connection.connected_to_count + " connections",
         map: map
       });
@@ -97,12 +129,19 @@ $(function() {
     setTimeout(function() { if (map.getZoom() > 8) map.setZoom(8); }, 500);
   }
 
+  function closeInfoWindows() {
+    for (var i=0; i<infoWindows.length; ++i) {
+      infoWindows[i].close();
+    }
+  }
+
   function setInfoWindow(id, marker) {
     var infoWindow = new google.maps.InfoWindow({
       content: "<div class='in_map_connection'>" + $("#connection_" + id).html() + "</div>"
     });
 
     google.maps.event.addListener(marker, 'click', function() {
+      closeInfoWindows();
       infoWindow.open(map,marker);
     });
     infoWindows.push(infoWindow);
